@@ -1,3 +1,3 @@
 #!/bin/sh
 
-scp $BOTHOST:$BOTPATH/log.txt .
+scp $POKEDEXBOTHOST:$POKEDEXBOTPATH/log.txt .

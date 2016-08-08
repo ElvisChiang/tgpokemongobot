@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ssh $BOTHOST "sh -c 'tail -f $BOTPATH/log.txt'"
+ssh $POKEDEXBOTHOST "sh -c 'tail -f $POKEDEXBOTPATH/log.txt'"

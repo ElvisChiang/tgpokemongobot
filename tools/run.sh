@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ssh -n -f $BOTHOST "sh -c 'cd $BOTPATH; nohup ./tgwalkrbot >> log.txt 2>&1 &'"
+ssh -n -f $POKEDEXBOTHOST "sh -c 'cd $POKEDEXBOTPATH; nohup ./tgpokemongobot >> log.txt 2>&1 &'"

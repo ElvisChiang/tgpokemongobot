@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ssh $BOTHOST "sh -c 'killall tgwalkrbot'"
+ssh $POKEDEXBOTHOST "sh -c 'killall tgpokemongobot'"
