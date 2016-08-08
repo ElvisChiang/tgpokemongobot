@@ -190,5 +190,5 @@ func startBot() {
 	}
 
 	// run the bot, this will block
-	boilerplate.RunBot(apiToken, updateFunc, "WalkrBot", "Reply Walkr information")
+	boilerplate.RunBot(apiToken, updateFunc, "pgoplusbot", "Reply Pokemon Go information")
 }
