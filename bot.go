@@ -172,6 +172,11 @@ func startBot() {
 				fmt.Println("Ignoring non-text message")
 				return
 			}
+			if msg.IsReply() {
+				fmt.Println("Ignoring replied message")
+				return
+			}
+
 			// Note: Bots cannot receive from channels, at least no text messages. So we don't have to distinguish anything here
 
 			// display the incoming message
