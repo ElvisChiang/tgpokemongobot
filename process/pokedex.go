@@ -75,6 +75,7 @@ func FindPokemon(gameData []GameData, msg string) (pokemon GameData, ok bool) {
 		return
 	}
 	fmt.Printf("finding for pokemon name `%s`\n", msg)
+	msg = strings.ToLower(msg)
 	for _, data := range gameData {
 		if strings.Contains(strings.ToLower(data.Name), msg) {
 			pokemon = data
