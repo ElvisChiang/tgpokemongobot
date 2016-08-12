@@ -71,8 +71,9 @@ func sendPokemonPic(api *tbotapi.TelegramBotAPI, chat *tbotapi.Chat, pokemon pro
 		return
 	}
 	defer file.Close()
-	caption := fmt.Sprintf("# %d: %s\n暱稱: %v\n屬性: %s %s\n",
-		pokemon.Number, pokemon.Name, pokemon.Nickname, pokemon.Type1, pokemon.Type2)
+	caption := fmt.Sprintf("%s\n暱稱: %v\n屬性: %s %s\n",
+		fmt.Sprintf("fevgames.net/pokedex/%03d-%s", pokemon.Number, pokemon.Name),
+		pokemon.Nickname, pokemon.Type1, pokemon.Type2)
 	for _, evolve := range pokemon.Evolve {
 		caption += fmt.Sprintf("進化: /pm%s\n", evolve)
 	}
