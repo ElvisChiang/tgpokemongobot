@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"unicode"
 )
 
 const filePrefix = "./resources/"
@@ -40,8 +41,11 @@ func LoadGameData(nameFile string) (gameDataArray []GameData, ok bool) {
 		type1 := record[2]
 		type2 := record[3]
 		nickname := strings.Split(record[4], "_")
-		evolve := strings.Split(record[5], "_")
-		fmt.Printf("evolve %v", evolve)
+		// support whitespace and underline as field seperator
+		f := func(c rune) bool {
+			return unicode.IsSpace(c) || unicode.IsControl(c) || c == '_'
+		}
+		evolve := strings.FieldsFunc(record[5], f)
 		if evolve[0] == "-" {
 			evolve = evolve[:0]
 		}
