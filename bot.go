@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/ElvisChiang/tgpokemongobot/process"
 	"github.com/mrd0ll4r/tbotapi"
@@ -57,7 +58,7 @@ func sendText(api *tbotapi.TelegramBotAPI, chat *tbotapi.Chat, text string) (ok 
 		fmt.Printf("Error sending text: %s, err = %s\n", text, err)
 		return false
 	}
-	fmt.Printf("->%d, To:\t%s, %s\n", outMsg.Message.ID, outMsg.Message.Chat, text)
+	fmt.Printf("---- %s ----\n->%d, To:\t%s, %s\n", time.Now().String(), outMsg.Message.ID, outMsg.Message.Chat, text)
 	return true
 }
 
@@ -71,11 +72,11 @@ func sendPokemonPic(api *tbotapi.TelegramBotAPI, chat *tbotapi.Chat, pokemon pro
 		return
 	}
 	defer file.Close()
-	caption := fmt.Sprintf("%s\n暱稱: %v\n屬性: %s %s\n",
+	caption := fmt.Sprintf("%s\n暱稱: %v\n屬性: %s %s",
 		fmt.Sprintf("fevgames.net/pokedex/%03d-%s", pokemon.Number, pokemon.Name),
 		pokemon.Nickname, pokemon.Type1, pokemon.Type2)
 	for _, evolve := range pokemon.Evolve {
-		caption += fmt.Sprintf("進化: /pm%s\n", evolve)
+		caption += fmt.Sprintf("\n進化: /pm%s", evolve)
 	}
 	caption += fmt.Sprintf("")
 	fmt.Println(caption)
@@ -90,7 +91,7 @@ func sendPokemonPic(api *tbotapi.TelegramBotAPI, chat *tbotapi.Chat, pokemon pro
 		fmt.Printf("Error sending photo: %s\n", err)
 		return
 	}
-	fmt.Printf("->%d, To:\t%s, (Photo)\n", outMsg.Message.ID, outMsg.Message.Chat)
+	fmt.Printf("---- %s ----\n->%d, To:\t%s, (Photo)\n", time.Now().String(), outMsg.Message.ID, outMsg.Message.Chat)
 	ok = true
 	return
 }
@@ -101,7 +102,7 @@ func sendSticker(api *tbotapi.TelegramBotAPI, chat *tbotapi.Chat, id string) (ok
 		fmt.Printf("Error sending sticker: %s, err = %s\n", id, err)
 		return false
 	}
-	fmt.Printf("->%d, To:\t%s, sticker %s\n", outMsg.Message.ID, outMsg.Message.Chat, id)
+	fmt.Printf("---- %s ----\n->%d, To:\t%s, sticker %s\n", time.Now().String(), outMsg.Message.ID, outMsg.Message.Chat, id)
 	return true
 }
 
@@ -167,7 +168,7 @@ func startBot() {
 			if typ == tbotapi.TextMessage {
 				text = *msg.Text
 			}
-			fmt.Printf("<-%d, From:\t%s, Text: %s \n", msg.ID, msg.Chat, text)
+			fmt.Printf("---- %s ----\n<-%d, From:\t%s, Text: %s \n", time.Now().String(), msg.ID, msg.Chat, text)
 			if typ != tbotapi.TextMessage {
 				//ignore non-text messages for now
 				fmt.Println("Ignoring non-text message")
