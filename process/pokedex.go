@@ -41,7 +41,7 @@ func LoadGameData(nameFile string) (gameDataArray []GameData, ok bool) {
 		type1 := record[2]
 		type2 := record[3]
 		nickname := strings.Split(record[4], "_")
-		// support whitespace and underline as field seperator
+		// support whitespace and underline as field separator
 		f := func(c rune) bool {
 			return unicode.IsSpace(c) || unicode.IsControl(c) || c == '_'
 		}

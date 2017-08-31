@@ -1,5 +1,7 @@
 # Telegram bot for Pokemon Go
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/ElvisChiang/tgpokemongobot)](https://goreportcard.com/report/github.com/ElvisChiang/tgpokemongobot)
+
 ## setup
 
 - Unpack
